@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>My App</title>
+    <link rel="stylesheet" href="style.css">
+    <!--Leaflet css-->
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+
+<body>
+
+    <div class="app">
+        <div class="top-bar">
+            <!--<h2> My location</h2>-->
+            <button class="search-button" onclick="openSearch()">
+                🔍
+            </button>
+        </div>
+
+        <div id="search-container" class="search-container">
+            <input
+                   type="text"
+                   id="seachInput"
+                   placeholder="Search..." />
+            <button class="close-search" onclick="closeSearch()">
+                ✕
+            </button>
+
+        </div>
+
+        <main>
+
+            <div id="map"></div>
+            <button class="primary-butoon" onclick="getLocation()">
+                My Location
+            </button>
+
+            <p id="locationMessage"></p>
+
+        </main>
+
+        <!--Bottom Navigation-->
+        <nav>
+            <a href="home.html"> Home</a>
+            <a href="search.html"> Search</a>
+            <a href="profile.html"> Profile</a>
+        </nav>
+
+    </div>
+
+    <!--leaflet javascript-->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    </script>
+
+    <script src="JavaScript.js"></script>
+
+</body>
+</html>
