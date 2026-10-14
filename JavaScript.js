@@ -40,6 +40,56 @@ function sendResetEmail() {
         "Password reset instructions have beens ent to your email.";
 }
 
+//appearance theme
+const savedMode = localStorage.getItem("appearanceMode") || "system";
+function setTheme(mode) {
+    let theme;
+
+    if (mode === "system") {
+        //follow the devices appearance settings
+        theme = window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+    }
+    else if (mode === "automatic") {
+        //automatically switch themes based on time of day
+        let hour = new Date().getHours();
+
+        theme = (hour >= 18 || hour < 6)
+            ? "dark"
+            : "light";
+    }
+    else {
+        //use the selected light or dark mode
+        theme = mode;
+    }
+    document.body.setAttribute("data-theme", theme);
+    localStorage.setItem("appearanceMode", mode);
+}
+
+//get selected appearance option
+const appearanceOptions = document.querySelectorAll('input[name="appearance"]');
+
+//apply the selected appearance when changed
+appearanceOptions.forEach(option => {
+    option.addEventListener("change", function() {
+        if (this.checked) {
+            setTheme(this.value);
+        }
+    });
+});
+
+//apply the saved appearance when the page loads
+const selectedAppearance = document.querySelector('input[name="appearance"]:checked');
+
+if (selectedAppearance) {
+    setTheme(selectedAppearance.value);
+} else {
+    setTheme(savedMode);
+}
+
+
+
 //Get user location
 let map;
 let marker;

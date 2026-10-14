@@ -99,6 +99,7 @@
     <Content Include="LoginPage.html" />
     <Content Include="Profile.html" />
     <Content Include="style.css" />
+    <Content Include="style1.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
