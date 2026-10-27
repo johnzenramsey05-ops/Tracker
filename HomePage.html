@@ -15,22 +15,38 @@
 <body>
 
     <div class="app">
-        <div class="top-bar">
+        <div class="search-wrapper">
             <!--<h2> My location</h2>-->
-            <button class="search-button" onclick="openSearch()">
-                🔍
+            <button id="searchButton"
+                    class="search-button"
+                    type="button"
+                    onclick="openSearch()"
+                    aria-label="Open Search">
+                ⌕
             </button>
-        </div>
-
+        
         <div id="search-container" class="search-container">
             <input type="text"
-                   id="seachInput"
+                   id="searchInput"
                    placeholder="Search..." />
-            <button class="close-search" onclick="closeSearch()">
+
+            <button class="close-search"
+                    type="button"
+                    onclick="closeSearch()"
+                    aria-label="Close Search">
                 ✕
             </button>
-
-        </div>
+            <div class="sos-wrapper">
+                <!--sos button-->
+                <button class="sos-button" 
+                        type="button"
+                        onclick="sendSOS()"
+                        aria-label="Send SOS">
+                    SOS
+                </button>
+            </div>
+         </div>
+    </div>
 
         <main>
 
@@ -44,20 +60,15 @@
         </main>
 
         <!--Bottom Navigation-->
-        <nav>
-            <a href="home.html" class="nav-icon" aria-label="Home" title="Home">
-                ⌂
-            </a>
-            <a href="profile.html" class="nav-icon" aria-label="Profile" title="Profile">
-                ♙
-            </a>
+        <nav class="bottom-nav">
+            <a href="HomePage.html">⌂<span>Home</span></a>
+            <a href="Profile.html">♙<span>Profile</span></a>
         </nav>
 
     </div>
 
     <!--leaflet javascript-->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"></script>
-
     <script src="JavaScript.js"></script>
     
 

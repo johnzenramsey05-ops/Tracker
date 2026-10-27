@@ -1,14 +1,21 @@
-﻿function login() {
-    //check login info
+﻿//check login info
+function login() {
     window.location.href = "HomePage.html";
 }
 function forgotPassword() {
     window.location.href = "ForgotPassword.html";
 }
+function changePassword() {
+    window.location.href = "ChangePassword.html";
+}
 //from login page to create account page
 function goToCreateAccount() {
     window.location.href = "CreateAccount.html";
 }
+//logout button then goes to login page
+
+
+
 //from create account page to home page
 //make if statement about them not putting in any info.
 function createAccount() {
@@ -18,13 +25,21 @@ function createAccount() {
 function goToLogin() {
     window.location.href = "LoginPage.html";
 }
-function openSearch(){
-    document.getElementById("search-container").style.display = "flex";
-    document.getElementById("searchInput").focus();
+
+function openSearch() {
+    document.getElementById("searchButton").style.display = "none";
+
+    const container = document.getElementById("search-container");
+    container.style.display = "flex";
+
+    const input = document.getElementById("searchInput").focus();
 }
 function closeSearch() {
+
     document.getElementById("search-container").style.display = "none";
     document.getElementById("searchInput").value = "";
+
+    document.getElementById("searchButton").style.display = "flex";
 }
 
 function sendResetEmail() {
@@ -39,54 +54,94 @@ function sendResetEmail() {
     document.getElementById("resetMessage").textContent =
         "Password reset instructions have beens ent to your email.";
 }
+//appearance
+const appearanceOptions = document.querySelectorAll(
+    'input[name="appearance"]'
+);
 
-//appearance theme
-const savedMode = localStorage.getItem("appearanceMode") || "system";
-function setTheme(mode) {
-    let theme;
+function applyAppearance(mode) {
+    const root = document.documentElement;
 
     if (mode === "system") {
-        //follow the devices appearance settings
-        theme = window.matchMedia("(prefers-color-scheme: dark)").matches
-            ? "dark"
-            : "light";
-    }
-    else if (mode === "automatic") {
-        //automatically switch themes based on time of day
-        let hour = new Date().getHours();
+        // Follow the phone or computer's theme
+        const isDark = window.matchMedia(
+            "(prefers-color-scheme: dark)"
+        ).matches;
 
-        theme = (hour >= 18 || hour < 6)
-            ? "dark"
-            : "light";
+        root.setAttribute("data-theme", isDark ? "dark" : "light");
+
+    } else if (mode === "auto") {
+        // Light during the day, dark at night
+        updateAutoTheme();
+
+    } else {
+        root.setAttribute("data-theme", mode);
     }
-    else {
-        //use the selected light or dark mode
-        theme = mode;
-    }
-    document.body.setAttribute("data-theme", theme);
-    localStorage.setItem("appearanceMode", mode);
 }
 
-//get selected appearance option
-const appearanceOptions = document.querySelectorAll('input[name="appearance"]');
+function updateAutoTheme() {
+    const hour = new Date().getHours();
 
-//apply the selected appearance when changed
+    // Light mode from 6 AM to 5:59 PM
+    const isDaytime = hour >= 6 && hour < 18;
+
+    document.documentElement.setAttribute(
+        "data-theme",
+        isDaytime ? "light" : "dark"
+    );
+}
+
+// Update theme when a setting is selected
 appearanceOptions.forEach(option => {
-    option.addEventListener("change", function() {
-        if (this.checked) {
-            setTheme(this.value);
-        }
+    option.addEventListener("change", () => {
+        const selectedMode = option.value;
+
+        localStorage.setItem("appearance", selectedMode);
+        applyAppearance(selectedMode);
     });
 });
 
-//apply the saved appearance when the page loads
-const selectedAppearance = document.querySelector('input[name="appearance"]:checked');
+// Follow system theme changes in real time
+const systemTheme = window.matchMedia(
+    "(prefers-color-scheme: dark)"
+);
 
-if (selectedAppearance) {
-    setTheme(selectedAppearance.value);
-} else {
-    setTheme(savedMode);
+systemTheme.addEventListener("change", () => {
+    if (localStorage.getItem("appearance") === "system") {
+        applyAppearance("system");
+    }
+});
+
+// Load the saved preference
+const savedMode = localStorage.getItem("appearance") || "system";
+
+const selectedOption = document.querySelector(
+    `input[name="appearance"][value="${savedMode}"]`
+);
+
+if (selectedOption) {
+    selectedOption.checked = true;
 }
+
+applyAppearance(savedMode);
+
+// Recheck auto scheduling when the page becomes active
+document.addEventListener("visibilitychange", () => {
+    if (
+        !document.hidden &&
+        localStorage.getItem("appearance") === "auto"
+    ) {
+        updateAutoTheme();
+    }
+});
+
+function logout() {
+    window.location.href = "LoginPage.html";
+}
+
+
+
+
 
 
 
