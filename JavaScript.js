@@ -43,7 +43,7 @@ function closeSearch() {
 }
 
 function sendResetEmail() {
-    let email = document.getElementById("resetEmail").value;
+    let email = document.getElementById("resetEmail").value.trim();
 
     if (email == "") {
         document.getElementById("resetMessage").textContent =
@@ -52,7 +52,7 @@ function sendResetEmail() {
     }
 
     document.getElementById("resetMessage").textContent =
-        "Password reset instructions have beens ent to your email.";
+        "Password reset instructions have been sent to your email.";
 }
 //appearance
 const appearanceOptions = document.querySelectorAll(
@@ -149,7 +149,7 @@ function logout() {
 let map;
 let marker;
 function getLocation() {
-    if (!navigator.getLocation) {
+    if (!navigator.geolocation) {
         document.getElementById("locationMessage").textContent =
             "Geolocation is not supported.";
         return;
@@ -157,7 +157,7 @@ function getLocation() {
     navigator.geolocation.getCurrentPosition(showPosition, locationError);
 }
 
-function showPostion(position) {
+function showPosition(position) {
     let latitude = position.coords.latitude;
     let longitude = position.coords.longitude;
     if (!map) {
@@ -176,10 +176,19 @@ function showPostion(position) {
             .bindPopup("You are here!")
             .openPopup();
     }
-    document.getElementById("loactionMessage").textContent =
+    document.getElementById("locationMessage").textContent =
         "Your location has been found.";
 }
 
-function locationError() {
+function locationError(error) {
     console.log("Unable to get your location.");
+    const messages = {
+        1: "Location permission was denied.",
+        2: "Your location is unavailable.",
+        3: "The location request timed out."
+    };
+    const message = error && messages[error.code]
+        ? messages[error.code]
+        : "Unable to get your location.";
+    document.getElementById("locationMessage").textContent = message;
 }
