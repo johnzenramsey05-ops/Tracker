@@ -1,4 +1,5 @@
-﻿//check login info
+﻿/* exported login, forgotPassword, changePassword, goToCreateAccount, createAccount, goToLogin, openSearch, closeSearch, sendResetEmail, logout, getLocation */
+//check login info
 function login() {
     window.location.href = "HomePage.html";
 }
@@ -32,7 +33,7 @@ function openSearch() {
     const container = document.getElementById("search-container");
     container.style.display = "flex";
 
-    const input = document.getElementById("searchInput").focus();
+    document.getElementById("searchInput").focus();
 }
 function closeSearch() {
 
@@ -43,9 +44,9 @@ function closeSearch() {
 }
 
 function sendResetEmail() {
-    let email = document.getElementById("resetEmail").value.trim();
+    const email = document.getElementById("resetEmail").value.trim();
 
-    if (email == "") {
+    if (email === "") {
         document.getElementById("resetMessage").textContent =
             "Please enter your email.";
         return;

@@ -16,6 +16,24 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-      - name: Run tests
-        run: node --test
+          node-version: 24
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Check JavaScript syntax
+        run: |
+          node --check JavaScript.js
+          node --check tests/app-fixture.js
+          node --check tests/app.test.js
+          node --check tests/integration.test.js
+          node --check tests/prd-requirements.test.js
+      - name: Lint JavaScript
+        run: npm run lint:js
+      - name: Lint CSS
+        run: npm run lint:css
+      - name: Run unit tests
+        run: npm run test:unit
+      - name: Run page integration tests
+        run: npm run test:integration
+      - name: List PRD requirements awaiting implementation
+        run: npm run test:prd
