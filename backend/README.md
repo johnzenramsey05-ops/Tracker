@@ -1,7 +1,8 @@
 # CyberTrak Python backend
 
-This is a separate Python API for the HTML frontend. The root `app.py` is a
-class exercise and is not connected to the CyberTrak MariaDB database.
+This is a separate Python API for the HTML frontend. The Milestone 0 `app.py`
+in the workspace parent is a class exercise and is not connected to the
+CyberTrak MariaDB database.
 
 ## Setup
 

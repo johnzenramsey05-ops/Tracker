@@ -4,7 +4,7 @@ const {
     isValidEmail,
     validatePassword,
     validateRegistration
-} = require("../Tracker/validation.js");
+} = require("../validation.js");
 
 test("accepts valid addresses from common email providers", () => {
     for (const email of [
