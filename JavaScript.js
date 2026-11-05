@@ -9,11 +9,27 @@ function forgotPassword() {
 function goToCreateAccount() {
     window.location.href = "CreateAccount.html";
 }
-//from create account page to home page
-//make if statement about them not putting in any info.
 function createAccount() {
-    alert("Account created!");
-    window.location.href = "HomePage.html";
+    const firstName = document.getElementById("firstName").value;
+    const lastName = document.getElementById("lastName").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+    const message = document.getElementById("registrationMessage");
+    const errors = window.CyberTrakValidation.validateRegistration({
+        firstName,
+        lastName,
+        email,
+        password,
+        confirmPassword
+    });
+
+    if (errors.length > 0) {
+        message.textContent = errors.join(" ");
+        return;
+    }
+
+    message.textContent = "Form checks passed. Account creation is not connected yet.";
 }
 function goToLogin() {
     window.location.href = "LoginPage.html";

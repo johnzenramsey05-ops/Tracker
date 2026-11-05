@@ -6,6 +6,7 @@
     <title>Create Account</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style1.css">
+    <script src="validation.js" defer></script>
     <script src="JavaScript.js" defer></script>
 </head>
 
@@ -53,9 +54,10 @@
                 <div class="password-rules">
                     <strong>Password must contain:</strong>
                     <ul>
-                        <li>At least one capitialized letter</li>
+                    <li>At least one capital letter</li>
                         <li> At least one number</li>
                         <li> At least one unique symbol</li>
+                    <li>At least 12 characters and no first or last name</li>
                     </ul>
                 </div>
 
@@ -76,6 +78,8 @@
                        required />
             </div>
 
+            <p id="registrationMessage" role="status" aria-live="polite"></p>
+
             <button class="primary-butoon" onclick="createAccount()">
                 Create Account
             </button>
@@ -88,8 +92,5 @@
         </main>
 
     </div>
-
-    <script src="JavaScript.js"></script>
-
 </body>
 </html>
