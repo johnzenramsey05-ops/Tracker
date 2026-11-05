@@ -3,84 +3,81 @@
     height: 65px;
     border-radius: 50%;
     object-fit: cover;
-    background-color: #e5e7eb;
+    background-color: var(--card-bg-color);
     flex-shrink: 0;
 }
-
+/*Settings Card*/
 .settings-card {
-    background: #ffffff;
+    background-color: var(--card-bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 20px;
     margin: 20px 0;
 }
-
-    .settings-card h3 {
-        font-size: 20px;
-        margin: 0 0 8px;
-        color: #2221;   
-    }
-
+.settings-card h3 {
+    font-size: 20px;
+    margin: 0 0 8px;
+    color: var(--text-color);   
+}
 .settings-subtitle {
     font-size: 13px;
-    color: #777;
+    color: var(--secondary-text-color);
     margin: 0 0 12px;
     line-height: 1.5;
 }
-
 .settings-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 12px;
     padding: 16px 4px;
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid var(--border-color);
     text-decoration: none;
-    color: #222;
+    color: var(--text-color);
     transition: background-color 0.2s;
 }
-
-    .settings-row:last-child {
-        border-bottom: none;
-    }
-
-    .settings-row:hover {
-        background-color: #f7fafa;
-    }
-
+.settings-row:last-child {
+    border-bottom: none;
+}
+.settings-row:hover {
+    background-color: var(--hover-color);
+}
 .settings-info {
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
-
 .settings-title {
     font-size: 15px;
     font-weight: 600;
+    color: var(--text-color);
+    opacity: 1;
 }
-
-.settings-description {
-    font-size: 13px;
-    color: #777;
-    line-height: 1.4;
+.settings-description,
+.settings-subtitle,
+.profile-subtitle,
+.profile-bio,
+.notification-row p,
+.settings-info p{
+    color: var(--secondary-text-color);
 }
-
-.settings-arrow {
+.settings-arrow, 
+.profile-arrow{
     font-size: 28px;
-    color: #888;
+    color: var(--secondary-text-color);
     flex-shrink: 0;
 }
-
 .notification-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 15px;
 }
-
 .notification-row p {
     margin: 5px 0 0;
     font-size: 14px;
-    color: #777;
+    color: var(--secondary-text-color);
 }
 
 /* Toggle switch */
@@ -138,7 +135,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 15px 4px;
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid var(--border-color);
     cursor: pointer;
     font-size: 15px;
 }
@@ -153,46 +150,33 @@
 }
 
 /* Parent / Guardian */
-.settings-info {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
 .settings-info p {
     margin: 0;
-    color: #777777;
+    color: var(--secondary-text-color);
     font-size: 13px;
 }
 .status-label {
-    background-color: #fce8e6;
-    color: #a94442;
+    background-color: var(--card-bg-color);
+    color: var(--text-color);
     padding: 5px 10px;
     border-radius: 12px;
     font-size: 12px;
     white-space: nowrap;
 }
-.settings-arrow {
-    font-size: 28px;
-    color: #888888;
-    flex-shrink: 0;
-}
 a.settings-row:hover {
-    background-color: #f7fafa;
+    background-color: var(--hover-color);
 }
 
 /* Clickable Profile Card */
-.profile-link {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-}
 .profile-card {
     display: flex;
     align-items: center;
     gap: 15px;
     padding: 16px;
     border-radius: 12px;
-    background: #ffffff;
+    background: var(--card-bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
     cursor: pointer;
 }
 .profile-pic {
@@ -200,6 +184,7 @@ a.settings-row:hover {
     height: 65px;
     border-radius: 50%;
     object-fit: cover;
+    background-color: var(--border-color);
     flex-shrink: 0;
 }
 .profile-info {
@@ -208,16 +193,22 @@ a.settings-row:hover {
 .profile-info h2 {
     margin: 0 0 5px;
     font-size: 18px;
+    color: var(--text-color);
 }
 .profile-subtitle {
     margin: 0;
     font-size: 14px;
-    color: #777777;
 }
 .profile-arrow {
     font-size: 28px;
-    color: #888888;
+    color: var(--secondary-text-color);
 }
-.profile-link:hover .profile-card {
-    background-color: #f7fafa;
+.profile-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+.profile-link:hover .profile-card,
+a.settings-row:hover {
+    background-color: var(--hover-color);
 }

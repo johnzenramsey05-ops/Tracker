@@ -92,14 +92,24 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="2FactorAuthentication.html" />
+    <Content Include="AboutUs.html" />
+    <Content Include="ChangePassword.html" />
     <Content Include="CreateAccount.html" />
+    <Content Include="DisplayName.html" />
     <Content Include="ForgotPassword.html" />
+    <Content Include="HelpSupport.html" />
     <Content Include="HomePage.html" />
     <Content Include="JavaScript.js" />
+    <Content Include="LocationPermissions.html" />
     <Content Include="LoginPage.html" />
+    <Content Include="ManageConsent.html" />
+    <Content Include="ManagePersonalData.html" />
+    <Content Include="PrivacyPolicy.html" />
     <Content Include="Profile.html" />
     <Content Include="style.css" />
     <Content Include="style1.css" />
+    <Content Include="TermsConditions.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
