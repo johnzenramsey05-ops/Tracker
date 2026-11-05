@@ -1,0 +1,26 @@
+const test = require("node:test");
+
+test.todo("account creation validates required fields and matching credentials");
+test.todo("event creators configure an event location, radius, and duration");
+test.todo("members can join an invited event, while nonmembers cannot view it");
+test.todo("event creation, joining, and leaving each take no more than three steps");
+test.todo("location sharing starts for event members and stops immediately on leave");
+test.todo("event completion stops sharing and immediately deletes temporary location data");
+test.todo("map providers receive coordinates without user identity or event identifiers");
+test.todo("inside-radius and boundary locations do not create false distance alerts");
+test.todo("outside-radius locations notify event members within five seconds");
+test.todo("ambiguous stops, frozen fixes, and erratic GPS do not create false alerts");
+test.todo("location updates arrive at least every 15 seconds during an active event");
+test.todo("displayed locations meet the 15-foot accuracy requirement under normal GPS");
+test.todo("lost signal preserves the last known location and marks the device inactive within 10 seconds");
+test.todo("reconnection resumes location updates within five seconds");
+test.todo("intentional event departure is distinguished from signal loss or battery shutdown");
+test.todo("SOS is available in one tap and reaches all event members within five seconds");
+test.todo("SOS takes priority over other alerts and transmits only essential data");
+test.todo("an event supports 50 concurrent members without breaching alert and location targets");
+test.todo("passwords are securely hashed and authenticated APIs enforce authorization");
+test.todo("transport uses TLS 1.2 or newer and tokens are short-lived and securely stored");
+test.todo("database operations use parameterized queries and reject unsafe input");
+test.todo("location and movement history are not retained beyond active-event needs");
+test.todo("location tracking requests only essential location and notification permissions");
+test.todo("map loads within two seconds and normal-operation availability meets 99 percent");

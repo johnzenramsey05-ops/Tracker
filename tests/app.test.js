@@ -258,6 +258,60 @@ test("location success initializes the map and updates its marker on later fixes
     );
 });
 
+test("invalid GPS coordinates report an error and preserve the last valid map position", () => {
+    const leaflet = createLeafletMock();
+    const { app, elements } = createApp({
+        leaflet: leaflet.leaflet
+    });
+
+    app.showPosition({
+        coords: { latitude: 40.015, longitude: -105.2705 }
+    });
+    app.showPosition({
+        coords: { latitude: Number.NaN, longitude: -105.271 }
+    });
+    app.showPosition({
+        coords: { latitude: 91, longitude: -181 }
+    });
+    app.showPosition({});
+
+    assert.deepEqual(leaflet.calls.setView.map(({ coords, zoom }) => ({
+        coords: Array.from(coords),
+        zoom
+    })), [
+        { coords: [40.015, -105.2705], zoom: 15 }
+    ]);
+    assert.equal(
+        elements.get("locationMessage").textContent,
+        "Your location is unavailable."
+    );
+});
+
+test("valid GPS coordinates at the geographic limits are accepted", () => {
+    const leaflet = createLeafletMock();
+    const { app, elements } = createApp({
+        leaflet: leaflet.leaflet
+    });
+
+    app.showPosition({
+        coords: { latitude: -90, longitude: -180 }
+    });
+    app.showPosition({
+        coords: { latitude: 90, longitude: 180 }
+    });
+
+    assert.equal(leaflet.calls.setView.length, 2);
+    assert.equal(leaflet.calls.marker.length, 1);
+    assert.deepEqual(
+        leaflet.calls.setLatLng.map(coords => Array.from(coords)),
+        [[90, 180]]
+    );
+    assert.equal(
+        elements.get("locationMessage").textContent,
+        "Your location has been found."
+    );
+});
+
 test("location failures report permission, unavailable, timeout, and unknown errors", () => {
     const { app, elements } = createApp();
     const message = elements.get("locationMessage");

@@ -158,8 +158,21 @@ function getLocation() {
 }
 
 function showPosition(position) {
-    let latitude = position.coords.latitude;
-    let longitude = position.coords.longitude;
+    const coords = position && position.coords;
+    const latitude = coords && coords.latitude;
+    const longitude = coords && coords.longitude;
+    if (
+        !Number.isFinite(latitude) ||
+        !Number.isFinite(longitude) ||
+        latitude < -90 ||
+        latitude > 90 ||
+        longitude < -180 ||
+        longitude > 180
+    ) {
+        locationError({ code: 2 });
+        return;
+    }
+
     if (!map) {
         map = L.map("map").setView([latitude, longitude], 15);
 
