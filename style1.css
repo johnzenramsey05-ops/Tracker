@@ -88,13 +88,11 @@
     height: 28px;
     flex-shrink: 0;
 }
-
 .switch input {
     opacity: 0;
     width: 0;
     height: 0;
 }
-
 .switch-slider {
     position: absolute;
     cursor: pointer;
@@ -119,7 +117,6 @@
 .switch input:checked + .switch-slider {
     background-color: #a2dae0;
 }
-
 .switch input:checked + .switch-slider::before {
     transform: translateX(22px);
 }

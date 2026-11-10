@@ -12,12 +12,6 @@ function changePassword() {
 function goToCreateAccount() {
     window.location.href = "CreateAccount.html";
 }
-//logout button then goes to login page
-
-
-
-//from create account page to home page
-//make if statement about them not putting in any info.
 function createAccount() {
     alert("Account created!");
     window.location.href = "HomePage.html";
@@ -52,7 +46,7 @@ function sendResetEmail() {
     }
 
     document.getElementById("resetMessage").textContent =
-        "Password reset instructions have beens ent to your email.";
+        "Password reset instructions have been sent to your email.";
 }
 //appearance
 const appearanceOptions = document.querySelectorAll(
