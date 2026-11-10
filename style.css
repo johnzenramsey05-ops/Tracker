@@ -31,6 +31,7 @@ body {
     color: var(--text-color);
     font-family: 'Times New Roman', serif;
     min-height: 100vh;
+    padding-bottom: 75px;
 }
 
 /*headings*/
@@ -272,12 +273,6 @@ nav {
         border-radius: 50%;
     }
 
-/* Prevent page content from being hidden behind navigation */
-body {
-    padding-bottom: 75px;
-}
-
-
 /* Settings & profile cards */
 .settings-card,
 .profile-card,
@@ -330,4 +325,3 @@ nav li a.active{
     accent-color: #A2DAE0;
     cursor: pointer;
 }
-
