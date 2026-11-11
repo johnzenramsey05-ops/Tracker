@@ -1,4 +1,9 @@
-﻿/*general page style*/
+﻿<<<<<<< HEAD
+/* Your local code */
+=======
+/* GitHub's code */
+> > > > > > > origin/main
+/*general page style*/
 * {
     box-sizing: border-box;
 }
@@ -31,6 +36,7 @@ body {
     color: var(--text-color);
     font-family: 'Times New Roman', serif;
     min-height: 100vh;
+    padding-bottom: 75px;
 }
 
 /*headings*/
@@ -275,12 +281,6 @@ nav a {
     border-radius: 50%;
 }
 
-/* Prevent page content from being hidden behind navigation */
-body {
-    padding-bottom: 75px;
-}
-
-
 /* Settings & profile cards */
 .settings-card,
 .profile-card,
@@ -333,6 +333,7 @@ nav li a.active{
     accent-color: #A2DAE0;
     cursor: pointer;
 }
+<<<<<<< HEAD
 /*3line icon*/
 .line-wrapper {
     display: flex !important;
@@ -368,3 +369,5 @@ nav li a.active{
         height: 3px;
         background-color: #263238 !important;
     }
+=======
+>>>>>>> origin/main

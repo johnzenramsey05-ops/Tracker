@@ -1,0 +1,1 @@
+Select lname, fname, email From users order by lname, fname desc;

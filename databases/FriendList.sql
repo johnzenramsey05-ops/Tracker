@@ -1,0 +1,1 @@
+Select u.lname, u.fname, u.email, from users u join friends f on u.user_id = f.friend_id where f.user_id = 1 order by u.lname, u.fname desc; 

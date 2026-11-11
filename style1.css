@@ -1,11 +1,4 @@
-﻿.profile-pic {
-    width: 65px;
-    height: 65px;
-    border-radius: 50%;
-    object-fit: cover;
-    background-color: var(--card-bg-color);
-    flex-shrink: 0;
-}
+﻿
 /*Settings Card*/
 .settings-card {
     background-color: var(--card-bg-color);

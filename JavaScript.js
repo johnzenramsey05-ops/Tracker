@@ -1,4 +1,5 @@
-﻿//check login info
+﻿/* exported login, forgotPassword, changePassword, goToCreateAccount, createAccount, goToLogin, openSearch, closeSearch, sendResetEmail, logout, getLocation */
+//check login info
 function login() {
     window.location.href = "HomePage.html";
 }
@@ -13,8 +14,26 @@ function goToCreateAccount() {
     window.location.href = "CreateAccount.html";
 }
 function createAccount() {
-    alert("Account created!");
-    window.location.href = "HomePage.html";
+    const firstName = document.getElementById("firstName").value;
+    const lastName = document.getElementById("lastName").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+    const message = document.getElementById("registrationMessage");
+    const errors = window.CyberTrakValidation.validateRegistration({
+        firstName,
+        lastName,
+        email,
+        password,
+        confirmPassword
+    });
+
+    if (errors.length > 0) {
+        message.textContent = errors.join(" ");
+        return;
+    }
+
+    message.textContent = "Form checks passed. Account creation is not connected yet.";
 }
 function goToLogin() {
     window.location.href = "LoginPage.html";
@@ -26,7 +45,7 @@ function openSearch() {
     const container = document.getElementById("search-container");
     container.style.display = "flex";
 
-    const input = document.getElementById("searchInput").focus();
+    document.getElementById("searchInput").focus();
 }
 function closeSearch() {
 
@@ -37,9 +56,9 @@ function closeSearch() {
 }
 
 function sendResetEmail() {
-    let email = document.getElementById("resetEmail").value;
+    const email = document.getElementById("resetEmail").value.trim();
 
-    if (email == "") {
+    if (email === "") {
         document.getElementById("resetMessage").textContent =
             "Please enter your email.";
         return;
@@ -143,7 +162,7 @@ function logout() {
 let map;
 let marker;
 function getLocation() {
-    if (!navigator.getLocation) {
+    if (!navigator.geolocation) {
         document.getElementById("locationMessage").textContent =
             "Geolocation is not supported.";
         return;
@@ -151,9 +170,22 @@ function getLocation() {
     navigator.geolocation.getCurrentPosition(showPosition, locationError);
 }
 
-function showPostion(position) {
-    let latitude = position.coords.latitude;
-    let longitude = position.coords.longitude;
+function showPosition(position) {
+    const coords = position && position.coords;
+    const latitude = coords && coords.latitude;
+    const longitude = coords && coords.longitude;
+    if (
+        !Number.isFinite(latitude) ||
+        !Number.isFinite(longitude) ||
+        latitude < -90 ||
+        latitude > 90 ||
+        longitude < -180 ||
+        longitude > 180
+    ) {
+        locationError({ code: 2 });
+        return;
+    }
+
     if (!map) {
         map = L.map("map").setView([latitude, longitude], 15);
 
@@ -170,10 +202,19 @@ function showPostion(position) {
             .bindPopup("You are here!")
             .openPopup();
     }
-    document.getElementById("loactionMessage").textContent =
+    document.getElementById("locationMessage").textContent =
         "Your location has been found.";
 }
 
-function locationError() {
+function locationError(error) {
     console.log("Unable to get your location.");
+    const messages = {
+        1: "Location permission was denied.",
+        2: "Your location is unavailable.",
+        3: "The location request timed out."
+    };
+    const message = error && messages[error.code]
+        ? messages[error.code]
+        : "Unable to get your location.";
+    document.getElementById("locationMessage").textContent = message;
 }

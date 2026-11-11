@@ -1,0 +1,24 @@
+{
+  "name": "cybertrak",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "eslint JavaScript.js tests",
+    "lint:css": "stylelint \"*.css\"",
+    "test": "node --test --test-reporter=spec",
+    "test:unit": "node --test --test-reporter=spec tests/app.test.js",
+    "test:integration": "node --test --test-reporter=spec tests/integration.test.js",
+    "test:prd": "node --test --test-reporter=spec tests/prd-requirements.test.js"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.0",
+    "eslint": "^10.0.0",
+    "globals": "^16.0.0",
+    "stylelint": "^18.0.0",
+    "stylelint-config-recommended": "^19.0.0"
+  },
+  "overrides": {
+    "minimatch": "^11.0.4"
+  }
+}
