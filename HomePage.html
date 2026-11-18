@@ -13,57 +13,94 @@
 </head>
 
 <body>
-
     <div class="app">
-        <div class="search-wrapper">
-            <!--<h2> My location</h2>-->
-            <button id="searchButton"
-                    class="search-button"
-                    type="button"
-                    onclick="openSearch()"
-                    aria-label="Open Search">
-                ⌕
-            </button>
-        
-        <div id="search-container" class="search-container">
-            <input type="text"
-                   id="searchInput"
-                   placeholder="Search..." />
 
-            <button class="close-search"
-                    type="button"
-                    onclick="closeSearch()"
-                    aria-label="Close Search">
-                ✕
-            </button>
-
-            <div class="line-wrapper">
-                <button class="line-button" type="button">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <h3>Would you like to share your location?</h3>
+                <button onclick="shareLocation()">Allow</button>
+                <button onclick="closePopup()">Don't allow</button>
             </div>
-         </div>
-    </div>
+        </div>
 
-        <main>
+        <div class="top-bar">
+            <div class="search-wrapper">
+                <button id="searchButton"
+                        class="search-button"
+                        type="button"
+                        onclick="openSearch()"
+                        aria-label="Open Search">
+                    ⌕
+                </button>
 
+                <div id="search-container" class="search-container">
+                    <input type="text"
+                           id="searchInput"
+                           placeholder="Search..." />
+
+                    <button class="close-search"
+                            type="button"
+                            onclick="closeSearch()"
+                            aria-label="Close Search">
+                        ✕
+                    </button>
+                </div>
+            </div>
+
+            <div class="menu-container">
+                <button class="menu-button"
+                        type="button"
+                        onclick="toggleMenu()">
+                    ☰
+                </button>
+
+                <div id="menuOptions" class="menu-options">
+                    <button> Create Event</button>
+                    <button> Join Event</button>
+                    <button> Add Friends</button>
+                </div>
+            </div>
+
+        </div>
+
+
+        <main class="map-page">
             <div id="map"></div>
-            <button class="primary-button" onclick="getLocation()">
-                My Location
-            </button>
-
-            <p id="locationMessage"></p>
-
         </main>
 
         <!--Bottom Navigation-->
         <nav class="bottom-nav">
-            <a href="HomePage.html">⌂<span>Home</span></a>
-           
-            <a href="Profile.html">♙<span>Profile</span></a>
+            <a href="HomePage.html" class="nav-item active">
+                <svg viewBox="0 0 24 24" class="nav-icon">
+                     <path d="M3 10.5 12 319 7.5"/>
+                     <path d="M5.5 9v11h13V9" />
+                     <path d="M9 20V-6H6V6" />
+                </svg>
+                <span class="nav-label">Home</span>
+            </a>
+
+            <button class="sos-button" onclick="SOS()">
+                <span class="sos-text">SOS</span>
+            </button>
+
+            <a href="Profile.html" class="nav-item">
+                <svg viewBox="0 0 24 24" class="nav-icon">
+                    <circle cx="12" cy="12" r="4"/>
+                     <path d="M4.5 21a7.5 7.5 0 0 1 15 0" />
+                </svg>
+                <span class="nav-label">Profile</span>
+            </a>
         </nav>
+        <!--sos popup-->
+        <div id="sosPopup" class="sos-popup">
+            <div class="sos-content">
+                <h2>Emergency Assistance</h2>
+                <p>Are you sure you need emergency assistance?</p>
+                <h1 id="countdown">5</h1>
+                <button onclick="cancelSOS()">Cancel</button>
+                <button onclick="call911()">Call 911</button>
+            </div>
+        </div>
 
     </div>
 

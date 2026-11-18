@@ -14,6 +14,7 @@ function goToCreateAccount() {
     window.location.href = "CreateAccount.html";
 }
 function createAccount() {
+    const userName = document.getElementById("username").value;
     const firstName = document.getElementById("firstName").value;
     const lastName = document.getElementById("lastName").value;
     const email = document.getElementById("email").value;
@@ -54,7 +55,67 @@ function closeSearch() {
 
     document.getElementById("searchButton").style.display = "flex";
 }
+function shareLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            // Handle the user's location
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
 
+            console.log("Latitude: " + latitude);
+            console.log("Longitude: " + longitude);
+            closePopup();
+        },
+        function (error) {
+            console.error("Location permission denied");
+            closePopup();
+            }
+        );
+    }
+}
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+}
+
+//the menu button toggles the menu options to show or hide
+function toggleMenu() {
+    const menuOptions = document.getElementById("menuOptions");
+    menuOptions.style.display = menuOptions.style.display === "block" ? "none" : "block";
+}
+//sos button 
+let sosTimer;
+let countdown = 5;
+function SOS() {
+    const popup = document.getElementById("sosPopup");
+    popup.style.display = "flex";
+
+    countdownTime = 5;
+    document.getElementById("countdown").textContent = countdownTime;
+    clearInterval(sosTimer);
+
+    sosTimer = setInterval(function() {
+        countdownTime--;
+
+        document.getElementById("countdown").textContent = countdownTime;
+
+        if (countdownTime <= 0) {
+            clearInterval(sosTimer);
+
+            document.getElementById("countdown").textContent = "Need help?"; 
+        }
+    }, 1000);
+}
+//cancel sos
+function cancelSOS() {
+    clearInterval(sosTimer);
+    document.getElementById("sosPopup").style.display = "none";
+}
+//call 911
+function call911() {
+    clearInterval(sosTimer);
+    window.location.href = "tel:911";
+}
+//send reset email
 function sendResetEmail() {
     const email = document.getElementById("resetEmail").value.trim();
 
