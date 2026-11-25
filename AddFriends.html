@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Add Friends</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <div class="add-friends">
+        <header class="add-friends-header">
+            <button class="back-button" onclick="history.back()">←Back</button>
+            <h2>Add Friends</h2>
+            <p>Connect with people you know</p>
+        </header>
+
+        <div class="search-container" id="searchContainer">
+            <button id="searchButton" type="button" onclick="openSearch()">
+                <img src="https://img.icons8.com/ios/50/search--v1.png"
+                     alt="Search" />
+            </button>
+
+            <div id="searchBar" class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search..." />
+                <button id="closeSearch" type="button" onclick="closeSearch()">
+                    ×
+                </button>
+            </div>
+        </div>
+
+        <h3>Friend Requests</h3>
+        <div class="friend-requests" id="friendsRequests">
+            <p>No new friend requests.</p>
+        </div>
+
+        <h3>Find Friends</h3>
+        <div class="find-friends" id="findFriends">
+            <p>No suggestions yet.</p>
+        </div>
+
+        <h3>My Friends</h3>
+        <div class="my-friends" id="myFriends">
+            <p>You haven't added any friends yet.</p>
+        </div>
+    </div>
+    <script src="JavaScript.js" defer></script>
+</body>
+</html>

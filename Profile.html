@@ -25,8 +25,7 @@
             <a href="edit-profile.html" class="profile-link">
                 <section class="profile-card">
 
-                    <img 
-                         src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='50' fill='%23e5e7eb'/%3E%3Ccircle cx='50' cy='36' r='18' fill='%239ca3af'/%3E%3Cpath d='M15 95c0-22 15-35 35-35s35 13 35 35' fill='%239ca3af'/%3E%3C/svg%3E"
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='50' fill='%23e5e7eb'/%3E%3Ccircle cx='50' cy='36' r='18' fill='%239ca3af'/%3E%3Cpath d='M15 95c0-22 15-35 35-35s35 13 35 35' fill='%239ca3af'/%3E%3C/svg%3E"
                          alt="Profile Picture"
                          class="profile-pic">
 
@@ -36,10 +35,10 @@
                     </div>
 
                     <span class="profile-arrow">&rsaquo;</span>
-                   
+
                 </section>
             </a>
-            
+
             <!--privacy & security-->
             <section class="settings-card">
                 <h2>Privacy & Security</h2>
@@ -65,7 +64,7 @@
                             Add an extra layer of security to your account
                         </span>
                     </div>
-                        <span class="settings-arrow">&rsaquo;</span>
+                    <span class="settings-arrow">&rsaquo;</span>
                 </a>
 
                 <a href="location-settings.html" class="settings-row">
@@ -150,17 +149,17 @@
                         <strong>Parental Consent</strong>
                         <p>Current consent status</p>
                     </div>
-                        <span class="status-label">Not Set</span>
+                    <span class="status-label">Not Set</span>
                 </div>
 
-                    <a href="parent-consent.html" class="settings-row">
-                        <div class="settings-info">
-                            <strong>Manage Consent</strong>
-                            <p>Review or update consent preferences</p>
-                        </div>
+                <a href="parent-consent.html" class="settings-row">
+                    <div class="settings-info">
+                        <strong>Manage Consent</strong>
+                        <p>Review or update consent preferences</p>
+                    </div>
 
-                        <span class="settings-arrow">&rsaquo;</span>
-                    </a>
+                    <span class="settings-arrow">&rsaquo;</span>
+                </a>
             </section>
 
             <!--legal & about-->
@@ -225,7 +224,7 @@
                     <span class="settings-arrow">&rsaquo;</span>
                 </a>
 
-                <!--delete account button(show small warning(are you sure you want to delete your account?))--> 
+                <!--delete account button(show small warning(are you sure you want to delete your account?))-->
                 <a href="LoginPage.html" class="settings-row">
                     <div class="settings-info">
                         <span class="settings-title">Logout</span>
@@ -239,13 +238,26 @@
 
         </main>
 
-            <!--bottom navigation-->
-            <nav class="bottom-nav">
-                <a href="HomePage.html">⌂<span>Home</span></a>
-                <a href="Profile.html">♙<span>Profile</span></a>
-            </nav>
+        <!--bottom navigation-->
+        <nav class="bottom-nav">
+            <a href="HomePage.html" class="nav-item">
+                <svg viewBox="0 0 24 24" class="nav-icon">
+                    <path d="M3 10.5 12 3l9 7.5" />
+                    <path d="M5.5 9v11h13V9" />
+                    <path d="M9 20v-6h6v6" />
+                </svg>
+                <span class="nav-label">Home</span>
+            </a>
+            <a href="Profile.html" class="nav-item">
+                <svg viewBox="0 0 24 24" class="nav-icon">
+                    <circle cx="12" cy="8" r="4" />
+                    <path d="M4 21a8 8 0 0 1 16 0" />
+                </svg>
+                <span class="nav-label">Profile</span>
+            </a>
+        </nav>
 
-        </div>
-
-    </body>
+    </div>
+    <script src="JavaScript.js" defer></script>
+</body>
 </html>

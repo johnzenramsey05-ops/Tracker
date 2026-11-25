@@ -1,162 +1,94 @@
-﻿/*Settings Card*/
-.settings-card {
+﻿/*==============================================
+                    HOME PAGE
+         home, map, events, location
+================================================*/
+/*=============================
+             Map
+===============================*/
+main {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    min-height: 0;
+    padding: 6px 16px;
+    box-sizing: border-box;
+}
+
+#map {
+    width: 100%;
+    height: 55vh;
+    min-height: 250px;
+    max-height: 500px;
+    border-radius: 18px;
+    overflow: hidden;
+}
+/*=============================
+          My Events
+===============================*/
+.event-section {
+    width: auto;
+    padding: 12px;
+    box-sizing: border-box;
     background-color: var(--card-bg-color);
-    color: var(--text-color);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 20px;
-    margin: 20px 0;
-}
-.settings-card h3 {
-    font-size: 20px;
-    margin: 0 0 8px;
-    color: var(--text-color);   
-}
-.settings-subtitle {
-    font-size: 13px;
-    color: var(--secondary-text-color);
-    margin: 0 0 12px;
-    line-height: 1.5;
-}
-.settings-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-    padding: 16px 4px;
-    border-bottom: 1px solid var(--border-color);
-    text-decoration: none;
-    color: var(--text-color);
-    transition: background-color 0.2s;
-}
-.settings-row:last-child {
-    border-bottom: none;
-}
-.settings-row:hover {
-    background-color: var(--hover-color);
-}
-.settings-info {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-.settings-title {
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--text-color);
-    opacity: 1;
-}
-.settings-description,
-.settings-subtitle,
-.profile-subtitle,
-.profile-bio,
-.notification-row p,
-.settings-info p{
-    color: var(--secondary-text-color);
-}
-.settings-arrow, 
-.profile-arrow{
-    font-size: 28px;
-    color: var(--secondary-text-color);
-    flex-shrink: 0;
-}
-.notification-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-}
-.notification-row p {
-    margin: 5px 0 0;
-    font-size: 14px;
-    color: var(--secondary-text-color);
+    border-radius: 16px;
+    margin: 10px 16px;
+    gap: 6px;
 }
 
-/* Toggle switch */
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 28px;
-    flex-shrink: 0;
-}
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-.switch-slider {
-    position: absolute;
-    cursor: pointer;
-    inset: 0;
-    background-color: #ccc;
-    border-radius: 28px;
-    transition: 0.3s;
+.event-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
 }
 
-.switch-slider::before {
-    content: "";
-    position: absolute;
-    width: 22px;
-    height: 22px;
-    left: 3px;
-    bottom: 3px;
-    background-color: white;
+    .event-header h2 {
+        margin: 0;
+        font-size: 22px;
+    }
+/*create event button*/
+.create-event-button {
+    width: 38px;
+    height: 38px;
+    border: none;
     border-radius: 50%;
-    transition: 0.3s;
-}
-
-.switch input:checked + .switch-slider {
     background-color: #a2dae0;
-}
-.switch input:checked + .switch-slider::before {
-    transform: translateX(22px);
-}
-
-.switch input:focus-visible + .switch-slider {
-    outline: 2px solid #333;
-    outline-offset: 3px;
-}
-
-/* Appearance Options */
-.choice-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 4px;
-    border-bottom: 1px solid var(--border-color);
-    cursor: pointer;
-    font-size: 15px;
-}
-.choice-row:last-child {
-    border-bottom: none;
-}
-.choice-row input[type="radio"] {
-    width: 18px;
-    height: 18px;
-    accent-color: #a2dae0;
+    color: #263238;
+    font-size: 24px;
     cursor: pointer;
 }
-
-/* Parent / Guardian */
-.settings-info p {
-    margin: 0;
-    color: var(--secondary-text-color);
-    font-size: 13px;
-}
-.status-label {
+/*event card*/
+.event-card {
     background-color: var(--card-bg-color);
-    color: var(--text-color);
-    padding: 5px 10px;
-    border-radius: 12px;
-    font-size: 12px;
-    white-space: nowrap;
+    border: 1px solid var(--border-color);
+    border-radius: 18px;
+    padding: 14px 16px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
 }
-a.settings-row:hover {
-    background-color: var(--hover-color);
-}
+    /*event deatails*/
+    .event-card h3 {
+        margin: 0 0 10px;
+        font-size: 18px;
+    }
 
-/* Clickable Profile Card */
+    .event-card p {
+        color: var(--secondary-text-color);
+        font-size: 14px;
+        margin: 0;
+    }
+/*empty events message*/
+#eventsList > p {
+    color: var(--secondary-text-color);
+    font-size: 14px;
+    margin: 0;
+}
+/*==============================================
+                PROFILE & SETTINGS
+    profile, privacy & security, notifications,
+                    appearance
+================================================*/
+/* Profile */
 .profile-card {
     display: flex;
     align-items: center;
@@ -168,6 +100,7 @@ a.settings-row:hover {
     border: 1px solid var(--border-color);
     cursor: pointer;
 }
+
 .profile-pic {
     width: 65px;
     height: 65px;
@@ -176,28 +109,540 @@ a.settings-row:hover {
     background-color: var(--border-color);
     flex-shrink: 0;
 }
+
 .profile-info {
     flex: 1;
 }
-.profile-info h2 {
-    margin: 0 0 5px;
-    font-size: 18px;
-    color: var(--text-color);
-}
+
+    .profile-info h2 {
+        margin: 0 0 5px;
+        font-size: 18px;
+        color: var(--text-color);
+    }
+
 .profile-subtitle {
     margin: 0;
     font-size: 14px;
 }
-.profile-arrow {
-    font-size: 28px;
-    color: var(--secondary-text-color);
-}
+
 .profile-link {
     display: block;
     text-decoration: none;
     color: inherit;
 }
-.profile-link:hover .profile-card,
-a.settings-row:hover {
-    background-color: var(--hover-color);
+
+    .profile-link:hover .profile-card,
+    a.settings-row:hover {
+        background-color: var(--hover-color);
+    }
+/*Settings card*/
+.settings-card {
+    background-color: var(--card-bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+    .settings-card h3 {
+        font-size: 20px;
+        margin: 0 0 8px;
+        color: var(--text-color);
+    }
+
+.settings-subtitle {
+    font-size: 13px;
+    color: var(--secondary-text-color);
+    margin: 0 0 12px;
+    line-height: 1.5;
+}
+/*Settings rows*/
+.settings-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 4px;
+    border-bottom: 1px solid var(--border-color);
+    text-decoration: none;
+    color: var(--text-color);
+    transition: background-color 0.2s;
+}
+
+    .settings-row:last-child {
+        border-bottom: none;
+    }
+
+    .settings-row:hover {
+        background-color: var(--hover-color);
+    }
+
+.settings-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.settings-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-color);
+    opacity: 1;
+}
+
+.settings-description,
+.settings-subtitle,
+.profile-subtitle,
+.profile-bio,
+.notification-row p {
+    color: var(--secondary-text-color);
+}
+
+.settings-arrow,
+.profile-arrow {
+    font-size: 28px;
+    color: var(--secondary-text-color);
+    flex-shrink: 0;
+}
+/*Notification*/
+.notification-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+    .notification-row p {
+        margin: 5px 0 0;
+        font-size: 14px;
+        color: var(--secondary-text-color);
+    }
+/*Privacy & Security*/
+/* Parent / Guardian */
+.settings-info p {
+    margin: 0;
+    color: var(--secondary-text-color);
+    font-size: 13px;
+}
+
+.status-label {
+    background-color: var(--card-bg-color);
+    color: var(--text-color);
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+/* Toggle switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+    flex-shrink: 0;
+}
+
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+.switch-slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background-color: #ccc;
+    border-radius: 28px;
+    transition: 0.3s;
+}
+
+    .switch-slider::before {
+        content: "";
+        position: absolute;
+        width: 22px;
+        height: 22px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        border-radius: 50%;
+        transition: 0.3s;
+    }
+
+.switch input:checked + .switch-slider {
+    background-color: #a2dae0;
+}
+
+    .switch input:checked + .switch-slider::before {
+        transform: translateX(22px);
+    }
+
+.switch input:focus-visible + .switch-slider {
+    outline: 2px solid #333;
+    outline-offset: 3px;
+}
+/*Appearance*/
+/* Appearance Options */
+.choice-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 4px;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+    font-size: 15px;
+}
+
+    .choice-row:last-child {
+        border-bottom: none;
+    }
+
+    .choice-row input[type="radio"] {
+        width: 18px;
+        height: 18px;
+        accent-color: #a2dae0;
+        cursor: pointer;
+    }
+
+.settings-row,
+.choice-row {
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+/*=============================
+          SELECT FRIENDS
+===============================*/
+/*select friends*/
+.select-friends{
+    max-width: 430px;
+    min-height: 100vh;
+    margin: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    color: var(--text-color);
+    background: var(--bg-color);
+}
+.friends-header{
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+.friends-header h2{
+    margin: 0;
+    font-size: 20px;
+}
+.friends-header .back-button {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    padding: 0;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    color: var(--text-color);
+    font-size: 26px;
+    cursor: pointer;
+}
+.friends-content h1{
+    margin-bottom: 8px;
+}
+.friends-content p{
+    color: var(--secondary-text-color);
+    margin-bottom: 20px;
+}
+.friends-list{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.friend-item{
+    display:flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    background: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.friend-item:hover{
+    background: var(--hover-color);
+}
+.friend-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: var(--primary-color, #a2dae0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+.friend-name{
+    flex: 1;
+    font-weight: 500;
+}
+.friend-checkbox{
+    width: 20px;
+    height: 20px;
+    accent-color: #65AEB8;
+    cursor: pointer;
+}
+.selected-count{
+    margin-top: 20px;
+    text-align: center;
+    color: var(--secondary-text-color);
+}
+.continue-button{
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 14px;
+    background: #a2dae0;
+    color: #263238;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.continue-button:disabled{
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+/*========================
+     CONFIRM INVITES
+==========================*/
+.confirm-page{
+    max-width: 430px;
+    min-height: 100vh;
+    margin: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    color: var(--text-color);
+    background: var(--bg-color);
+}
+.confirm-header{
+    display:flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+.confirm-header h2{
+    margin: 0;
+    font-size: 20px;
+}
+.confirm-content h1{
+    margin-bottom: 8px;
+}
+.confirm-content p{
+    color: var(--secondary-text-color);
+    margin-bottom: 20px;
+}
+.confirm-friends-list{
+    display: flex;
+    flex-direction:column;
+    gap: 10px;
+}
+.confirm-friend-item{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    background: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+}
+.confirm-friend-avatar{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #a2dae0;
+    color: #263238;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+.confirm-frined-name{
+    flex: 1;
+    font-weight: 500;
+}
+.confirm-check{
+    font-size: 20px;
+    color: #65aeb8;
+}
+.edit-button, .send-invites-button{
+    width: 100%;
+    padding: 15px;
+    margin-top: 15px;
+    font-size:16px;
+    font-weight: bold;
+    border-radius: 14px;
+    cursor: pointer;
+}
+.edit-button{
+    background: var(--card-bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+.send-invites-button{
+    background: #a2dae0;
+    color: #263238;
+    border: none;
+}
+.confirm-success{
+    text-align: center;
+    margin-top: 40px;
+}
+.confirm-success h1{
+    color: #65AEB8
+}
+.confirm-success p{
+    color: var(--secondary-text-color);
+}
+/*==============================================
+                    FRIENDS PAGE
+                    add friends
+================================================*/
+/*Add friends*/
+.add-friends{
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    overflow-y: auto;
+    box-sizing: border-box;
+    max-width: 430px;
+    margin: 0 auto;
+}
+.add-friends-header{
+    margin-bottom: 20px;
+    text-align: center;
+}
+.add-friends-header h2{
+    margin-bottom: 5px;
+}
+.add-friends-header p{
+    margin: 0;
+    color: #657579;
+    font-size: 14px;
+}
+.add-friends-header .back-button{
+    display:block;
+    margin-bottom: 15px;
+    text-align: left;
+}
+.add-friends .search-container{
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+    align-items: center;
+}
+.add-friends .search-container #searchButton{
+    display: flex;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    background: var(--button-bg-color);
+    cursor: pointer;
+}
+.search-container #searchButton img{
+    width: 22px;
+    height: 22px;
+}
+.add-friends .search-bar{
+    display: none;
+    flex: 1;
+    padding: 5px 12px;
+    align-items: center;
+    border-radius: 12px;
+    background-color: var(--card-bg-color);
+    border: none;
+}
+.add-friends .search-bar button{
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 22px;
+    cursor: pointer;
+    background: transparent;
+    color: var(--secondary-text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.add-friends .search-bar input{
+    flex: 1;
+    border: none;
+    outline: none;
+    min-width: 0;
+    font-size: 15px;
+    background: transparent;
+    color: var(--text-color);
+    font-family: 'Times New Roman', serif;
+}
+/*Friend requests*/
+.add-friends .friend-requests{
+    background: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 20px;
+    min-height: 55px;
+    box-sizing: border-box;
+}
+.add-friends .friend-requests p{
+    color: var(--secondary-text-color);
+    font-size: 14px;
+    margin: 0;
+}
+.add-friends .find-friends {
+    background: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 20px;
+    min-height: 55px;
+    box-sizing: border-box;
+}
+.add-friends .find-friends p {
+    color: var(--secondary-text-color);
+    font-size: 14px;
+    margin: 0;
+}
+.add-friends .my-friends {
+    background: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 20px;
+    min-height: 55px;
+    box-sizing: border-box;
+}
+.add-friends .my-friends p {
+    color: var(--secondary-text-color);
+    font-size: 14px;
+    margin: 0;
+}
+.add-friends h3{
+    color: var(--text-color);
+    font-size: 18px;
+    margin: 22px 0 10px;
+    font-weight: bold;
 }

@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Select Friends</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <div class="select-friends">
+        <!--back button then create event next to it-->
+        <header class="friends-header">
+            <button class="back-button" onclick="history.back()">←</button>
+            <h2>Create Event</h2>
+        </header>
+
+        <section class="friends-content">
+            <h2>Invite Friends</h2>
+            <p>Select the friends you want to invite to your event.</p>
+            
+            <div id="friendsList" class="friends-list">
+                <!--friends will be added with js-->
+            </div>
+
+            <div class="selected=count">
+                <span id="selectedCount">0 friends selected</span>
+            </div>
+
+            <button id="continueButton" class="continue-button" 
+                    onclick="continueToConfirmation()" disabled>
+                Continue
+            </button>
+
+        </section>
+        
+    </div>
+
+    <script src="JavaScript.js" defer></script>
+</body>
+</html>

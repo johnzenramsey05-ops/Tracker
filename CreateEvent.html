@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Create Event</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <div class="app create-event-page">
+        <header class="form-buttons">
+            <button class="back-button" onclick="history.back()">←Back</button>
+            <h2>Create Event</h2>
+        </header>
+        
+        <form id="createEventForm">
+            <p>Fill in the details below to create a new event.</p>
+
+            <label for="eventName">Event Name </label>
+            <input type="text" id="eventName"
+                   placeholder="Example: Team Meeting" required>
+
+            <label for="eventDate">Event Date:</label>
+            <input type="date" id="eventDate" required>
+
+            <div class="time-row">
+                <div class="time-field">
+                    <label for="startTime">Start Time:</label>
+                    <input type="time" id="startTime" value="19:30" required>
+                </div>
+
+                <div class="time-field">
+                    <label for="endTime">End Time:</label>
+                    <input type="time" id="endTime" value="23:30" required>
+                </div>
+            </div>
+
+            <label for="eventLocation">Event Location </label>
+            <input type="text" id="eventLocation"
+                   placeholder="Rafter's Bar" required>
+
+            <button type="button" onclick="saveEventDetails()">Select Friends</button>
+        </form>
+    </div>
+    <script src="JavaScript.js" defer></script>
+
+</body>
+</html>

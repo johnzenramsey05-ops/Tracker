@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Confirm Friends</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <div class="confirm-page">
+        <header class="confirm-header">
+            <button class="back-button" onclick="history.back()">←</button>
+            <h2>Create Event</h2>
+        </header>
+
+        <section class="confirm-content">
+            <h2>Confirm Friends</h2>
+            <p>Are these the correct people?</p>
+            <div id="eventDetails" class="event-details">
+                <!--event info will appear here-->
+            </div>
+            <div id="confirmFriendsList" class="confirm-friends-list">
+                <!--selected friends will appear here-->
+            </div>
+
+            <button class="edit-button" onclick="goBackToFriends()">
+                Edit Friends
+            </button>
+
+            <button class="send-invites-button" onclick="sendInvitations()">
+                Send Invitiations
+            </button>
+        </section>
+    </div>
+    <script src="JavaScript.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Event Invitations</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <div class="app invitations-page">
+        <header class="invitations-header">
+            <button class="back-button" onclick="history.back()">←Back</button>
+            <h2>Invitations</h2>
+            <p>Events you've been invited to</p>
+        </header>
+
+        <div class="invitations-content">
+            <div class="invitation-card">
+                <div class="invitation-top">
+                    <h3>Event Title</h3>
+                    <span class="status">Pending</span>
+                </div>
+
+                <p class="invited-by">Invited by John Doe</p>
+
+                <div class="invitation-details">
+                    <p>Date</p>
+                    <p>Time</p>
+                    <p>Place</p>
+                </div>
+
+                <div class="invitation-actions">
+                    <button type="button" class="accept-button" onclick="acceptInvitation()">
+                        Accept
+                    </button>
+                    <button type="button" class="decline-button" onclick="declineInvitation()">
+                        Decline
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="JavaScript.js" defer></script>
+</body>
+</html>

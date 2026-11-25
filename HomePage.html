@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <title>My App</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="style1.css" />
+    <link rel="stylesheet" href="style1.css">
     <!--Leaflet css-->
     <link rel="stylesheet"
           href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="JavaScript.js" defer></script>
+
 </head>
 
 <body>
@@ -23,58 +23,71 @@
             </div>
         </div>
 
+        <!--top navigation-->
         <div class="top-bar">
-            <div class="search-wrapper">
-                <button id="searchButton"
-                        class="search-button"
-                        type="button"
-                        onclick="openSearch()"
-                        aria-label="Open Search">
-                    ⌕
-                </button>
-
-                <div id="search-container" class="search-container">
-                    <input type="text"
-                           id="searchInput"
-                           placeholder="Search..." />
-
-                    <button class="close-search"
-                            type="button"
-                            onclick="closeSearch()"
-                            aria-label="Close Search">
-                        ✕
+            <header class="top-bar-header">
+                <h2>Cybertrak</h2>
+            </header>
+            <div class="top-buttons">
+                <div class="search-container" id="searchContainer">
+                    <button id="searchButton" type="button" onclick="openSearch()">
+                        <img src="https://img.icons8.com/ios/50/search--v1.png"
+                             alt="Search" />
                     </button>
-                </div>
-            </div>
 
-            <div class="menu-container">
-                <button class="menu-button"
-                        type="button"
-                        onclick="toggleMenu()">
-                    ☰
+
+                    <div id="searchBar" class="search-bar">
+                        <input type="text" id="searchInput" placeholder="Search..." />
+                        <button id="closeSearch" type="button" onclick="closeSearch()">
+                            ×
+                        </button>
+                    </div>
+                </div>
+
+                <!--notifications-->
+                <button class="notification-button" onclick="openInvitations()">
+                    ✉
                 </button>
 
-                <div id="menuOptions" class="menu-options">
-                    <button> Create Event</button>
-                    <button> Join Event</button>
-                    <button> Add Friends</button>
+                <div class="menu-container">
+                    <button class="menu-button" onclick="toggleMenu()" type="button">
+                        ☰
+                    </button>
+
+                    <div id="menuOptions" class="menu-options">
+                        <button type="button" onclick="goToCreateEvent()"> Create Event</button>
+                        <button type="button" onclick="joinEvent()"> Join Event</button>
+                        <button type="button" onclick="addFriends()"> Add Friends</button>
+                        <button type="button" onclick="settings()">Settings</button>
+                    </div>
                 </div>
             </div>
 
         </div>
+        
+        <div class="event-section">
+            <div class="event-header">
+                <h2>My Events</h2>
+                <button class="create-event-button" onclick="goToCreateEvent()">+</button>
+            </div>
 
+            <div id="eventsList">
+                <!--events will appear here-->
+            </div>
+        </div>
 
-        <main class="map-page">
+        <!--map-->
+        <main>
             <div id="map"></div>
         </main>
 
         <!--Bottom Navigation-->
         <nav class="bottom-nav">
-            <a href="HomePage.html" class="nav-item active">
+            <a href="HomePage.html" class="nav-item">
                 <svg viewBox="0 0 24 24" class="nav-icon">
-                     <path d="M3 10.5 12 319 7.5"/>
-                     <path d="M5.5 9v11h13V9" />
-                     <path d="M9 20V-6H6V6" />
+                    <path d="M3 10.5 12 3l9 7.5" />
+                    <path d="M5.5 9v11h13V9" />
+                    <path d="M9 20v-6h6v6" />
                 </svg>
                 <span class="nav-label">Home</span>
             </a>
@@ -85,8 +98,8 @@
 
             <a href="Profile.html" class="nav-item">
                 <svg viewBox="0 0 24 24" class="nav-icon">
-                    <circle cx="12" cy="12" r="4"/>
-                     <path d="M4.5 21a7.5 7.5 0 0 1 15 0" />
+                    <circle cx="12" cy="8" r="4" />
+                    <path d="M4 21a8 8 0 0 1 16 0" />
                 </svg>
                 <span class="nav-label">Profile</span>
             </a>
@@ -106,7 +119,7 @@
 
     <!--leaflet javascript-->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    
+    <script src="JavaScript.js" defer></script>
 
 </body>
 </html>
