@@ -114,10 +114,6 @@ function displayEventTime() {
 Friend selection: displayFriends, updateSelectedCount,
 continueToConfirmation
 ===================================================================*/
-function selectFriends() {
-    window.location.href = "SelectFriends.html";
-}
-
 //select friends
 const friends = [
     { id: 1, name: "Jane Doe" },
@@ -154,8 +150,7 @@ function displayFriends() {
                     selectedFriends.push(friend);
                 }
             } else {
-                selectedFriends = selectedFriends.filter
-                    (selected => selected.id !== friend.id);
+                selectedFriends = selectedFriends.filter(selected => selected.id !== friend.id);
             }
             updateSelectedCount();
         });
