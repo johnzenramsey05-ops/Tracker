@@ -26,12 +26,12 @@
             <div class="time-row">
                 <div class="time-field">
                     <label for="startTime">Start Time:</label>
-                    <input type="time" id="startTime" value="19:30" required>
+                    <input type="time" id="startTime" onchange="displayEventTime()" required>
                 </div>
 
                 <div class="time-field">
                     <label for="endTime">End Time:</label>
-                    <input type="time" id="endTime" value="23:30" required>
+                    <input type="time" id="endTime" onchange="displayEventTime()" required>
                 </div>
             </div>
 

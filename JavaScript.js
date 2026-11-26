@@ -16,9 +16,6 @@ function goToLogin() {
 function goToCreateAccount() {
     window.location.href = "CreateAccount.html";
 }
-function goBack() {
-    window.location.href = "HomePage.html";
-}
 /*=================================================================
 Account functions: createAccount, forgotPassword, changePassword,
 sendRestEmail               
@@ -253,6 +250,66 @@ function displayEventDetails() {
         <p><strong>Location:</strong>${eventDraft.location}</p>
     `;
 }
+//sample
+const defaultInvitations = [
+    {
+        id: 1,
+        eventName: "Friday Night Out",
+        date: "November 28, 2026",
+        time: "7:30 PM",
+        location: "Rafter's Bar",
+        invitedBy: "John Doe",
+        status: "Pending"
+    }
+];
+const invitations = JSON.parse(localStorage.getItem("invitations")) || defaultInvitations;
+function displayInvitations() {
+    const invitationsContainer = document.getElementById("invitationsContent");
+
+    if (!invitationsContainer) {
+        return;
+    }
+
+    if (invitations.length === 0) {
+        invitationsContainer.innerHTML = "<p>No invitations yet.</p>";
+        return;
+    }
+    invitationsContainer.innerHTML = "";
+
+    invitations.forEach(invitation => {
+        const invitationCard = document.createElement("div");
+        invitationCard.className = "invitation-card";
+        invitationCard.setAttribute("data-invitation-id", invitation.id);
+
+        invitationCard.innerHTML = `
+        <div class="invitation-top">
+            <h3>${invitation.eventName}</h3>
+            <span class="status">${invitation.status}</span>
+        </div>
+
+        <p class="invited-by">Invited by ${invitation.invitedBy}</p>
+
+        <div class="invitation-details">
+            <p>${invitation.date}</p>
+            <p>${invitation.time}</p>
+            <p>${invitation.location}</p>
+        </div>
+
+        <div class="invitation-actions">
+            <button type="button" class="accept-button"
+                onclick="acceptInvitation(${invitation.id})">
+                Accept
+            </button>
+
+            <button type="button" class="decline-button"
+                onclick="declineInvitation(${invitation.id})">
+                Decline
+            </button>
+        </div>`;
+
+        invitationsContainer.appendChild(invitationCard);
+    });
+}
 function sendInvitations() {
     const currentEvent = JSON.parse(sessionStorage.getItem("eventDraft") || "{}");
     if (selectedFriends.length === 0) {
@@ -275,11 +332,6 @@ function sendInvitations() {
             </button> 
         </div>`;
 }
-//go back & edit friend selection
-function goBackToFriends() {
-    window.location.href = "SelectFriends.html";
-}
-
 //only run friend confirmation on the ConfirmInvites page
 if (document.getElementById("confirmFriendsList")) {
     displaySelectedFriends();
@@ -369,11 +421,19 @@ function acceptInvitation(id) {
     }
 
     invitation.querySelector(".status").textContent = "Accepted";
+    const selectedInvitation = invitations.find(item => item.id === id);
+    if (selectedInvitation) {
+        selectedInvitation.status = "Accepted";
+        localStorage.setItem("invitations", JSON.stringify(invitations));
+    }
     invitation.querySelector(".status").classList.add("accepted");
 
     invitation.querySelector(".invitation-actions").remove();
 
-    alert("Invitation accepted. You have joined the event.");
+    const message = document.createElement("p");
+    message.className = "invitation-message";
+    message.textContent = "✓ You joined this event!";
+    invitation.appendChild(message);
 }
 function declineInvitation(id) {
     const invitation = document.querySelector(`[data-invitation-id="${id}"]`);
@@ -383,11 +443,19 @@ function declineInvitation(id) {
     }
 
     invitation.querySelector(".status").textContent = "Declined";
+    const selectedInvitation = invitations.find(item => item.id === id);
+    if (selectedInvitation) {
+        selectedInvitation.status = "Declined";
+        localStorage.setItem("invitations", JSON.stringify(invitations));
+    }
     invitation.querySelector(".status").classList.add("declined");
 
     invitation.querySelector(".invitation-actions").remove();
 
-    alert("Invitation declined.");
+    const message = document.createElement("p");
+    message.className = "invitation-message";
+    message.textContent = "Invitation declined!";
+    invitation.appendChild(message);
 }
 /*=================================================================
 Friends & menu: addFriends, joinEvent, toggleMenu    
@@ -792,6 +860,7 @@ function displayPublicEvents() {
     });
 }
 document.addEventListener("DOMContentLoaded", displayPublicEvents);
+document.addEventListener("DOMContentLoaded", displayInvitations);
 //display event only on the home page
 if (document.getElementById("eventsList")) {
     initializeMap();
