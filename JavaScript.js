@@ -361,10 +361,32 @@ Invitations: openInvitations, acceptInvitation, declineInvitation
 function openInvitations() {
     window.location.href = "Invitations.html";
 }
-function acceptInvitation() {
+function acceptInvitation(id) {
+    const invitation = document.querySelector(`[data-invitation-id="${id}"]`);
+
+    if (!invitation) {
+        return;
+    }
+
+    invitation.querySelector(".status").textContent = "Accepted";
+    invitation.querySelector(".status").classList.add("accepted");
+
+    invitation.querySelector(".invitation-actions").remove();
+
     alert("Invitation accepted. You have joined the event.");
 }
-function declineInvitation() {
+function declineInvitation(id) {
+    const invitation = document.querySelector(`[data-invitation-id="${id}"]`);
+
+    if (!invitation) {
+        return;
+    }
+
+    invitation.querySelector(".status").textContent = "Declined";
+    invitation.querySelector(".status").classList.add("declined");
+
+    invitation.querySelector(".invitation-actions").remove();
+
     alert("Invitation declined.");
 }
 /*=================================================================
@@ -585,9 +607,9 @@ document.addEventListener("visibilitychange", () => {
 });
 
 /*=================================================================
-friend requests (not finished)
+friend requests, find friends
 ===================================================================*/
-function displayFriendRequests{
+function displayFriendRequests(){
     const requestsContainer = document.getElementById("friendsRequests");
 
     const requests = JSON.parse(localStorage.getItem("friendRequests")) || [];
@@ -600,12 +622,176 @@ function displayFriendRequests{
 
     requests.forEach((request, index) => {
         const requestCard = document.createElement("div");
-        requestCard.className
-    })
+        requestCard.className = "friend-request-card";
+
+        requestCard.innerHTML = ` 
+        <div class="request-info"> 
+            <strong>${request.name}</strong>
+            <p>@${request.username}</p>
+        </div>
+        
+        <div class="request-actions">
+            <button onclick="acceptFriendRequest(${index})">
+                Accept
+            </button>
+            <button onclick="declineFriendRequest(${index})">
+                Decline
+            </button>
+        </div>`;
+        requestsContainer.appendChild(requestCard);
+    });
 }
+function acceptFriendRequest(index) {
+    const requests = JSON.parse(localStorage.getItem("friendRequests")) || [];
+    const request = requests[index];
+
+    if (!request) return;
+
+    const friends = JSON.parse(localStorage.getItem("myFriends")) || [];
+
+    friends.push(request);
+
+    localStorage.setItem("myFriends", JSON.stringify(friends));
+
+    requests.splice(index, 1);
+
+    localStorage.setItem("friendRequests", JSON.stringify(requests));
+
+    displayFriendRequests();
+    displayMyFriends();
+}
+function declineFriendRequest(index) {
+    const requests = JSON.parse(localStorage.getItem("friendRequests")) || [];
+    
+    requests.splice(index, 1);
+
+    localStorage.setItem("friendRequests", JSON.stringify(requests));
+
+    displayFriendRequests();
+}
+function displayMyFriends() {
+    const friendsContainer = document.getElementById("myFriends");
+
+    const friends = JSON.parse(localStorage.getItem("myFriends")) || [];
+
+    if (friends.length === 0) {
+        friendsContainer.innerHTML = '<p class="empty-message">You haven\'t added any friends yet.</p>';
+        return;
+    }
+    friendsContainer.innerHTML = "";
+
+    friends.forEach((friend) => {
+        const friendCard = document.createElement("div");
+        friendCard.className = "friend-card";
+
+        friendCard.innerHTML = ` 
+        <div class="friend-info"> 
+            <strong>${friend.name}</strong>
+            <p>@${friend.username}</p>
+        </div>`;
+        friendsContainer.appendChild(friendCard);
+    });
+}
+function searchFriends() {
+    const searchInput = document.getElementById("searchInput");
+    const resultsContainer = document.getElementById("findFriends");
+    const searchTerm = searchInput.value.trim().toLowerCase();
+
+    if (searchTerm === "") {
+        resultsContainer.innerHTML = "<p>No suggestions yet.</p>";
+        return;
+    }
+
+    const results = sampleUsers.filter(user =>
+        user.name.toLowerCase().includes(searchTerm) ||
+        user.username.toLowerCase().includes(searchTerm)
+    );
+
+    if (results.length === 0) {
+        resultsContainer.innerHTML = "<p>No users found.</p>";
+        return;
+    }
+
+    resultsContainer.innerHTML = "";
+
+    results.forEach(user => {
+        const userCard = document.createElement("div");
+        userCard.className = "friend-card";
+
+        userCard.innerHTML = `
+            <div class="friend-info">
+                <strong>${user.name}</strong>
+                <p>@${user.username}</p>
+            </div>
+        `;
+
+        resultsContainer.appendChild(userCard);
+    });
+}
+// Sample users for Find Friends
+const sampleUsers = [
+    { name: "Jane Doe", username: "janedoe" },
+    { name: "Maria Black", username: "mariablack" },
+    { name: "Cierra Johnson", username: "cierraj" },
+    { name: "Emily Davison", username: "emilyd" },
+    { name: "John Doe", username: "johndoe" }
+];
 /*=================================================================
 Page Initialization
 ===================================================================*/
+//load add friends page
+document.addEventListener("DOMContentLoaded", () => {
+    displayFriendRequests();
+    displayMyFriends();
+});
+document.querySelector(".add-friends .search-bar input")
+    ?.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            searchFriends();
+        }
+});
+const publicEvents = [
+    {
+        name: "Friday Night Out",
+        date: "November 28, 2026",
+        time: "7:30 PM",
+        location: "Rafter's Bar",
+        host: "Jane Doe",
+        members:["Jane Doe", "Maria Black", "Cierra Johnson"]
+    }
+];
+function displayPublicEvents() {
+    const eventsContainer = document.getElementById("publicEvents");
+
+    if (!eventsContainer) {
+        return;
+    }
+
+    if (publicEvents.length === 0) {
+        eventsContainer.innerHTML = "<p>No public events available.</p>";
+        return;
+    }
+    eventsContainer.innerHTML = "";
+
+    publicEvents.forEach(event => {
+        const eventCard = document.createElement("div");
+        eventCard.className = "public-event-card";
+
+        eventCard.innerHTML = `
+        <h3>${event.name}</h3>
+        <p>Hosted by ${event.host}</p>
+        <p>${event.date} · ${event.time}</p>
+        <p><strong>Group Members:</strong></p>
+        <p>${event.members.join(", ")}</p>
+        <button type="button" onclick="joinEvent('${event.name}')">
+            Join Event
+        </button>`;
+        
+
+        eventsContainer.appendChild(eventCard);
+    });
+}
+document.addEventListener("DOMContentLoaded", displayPublicEvents);
 //display event only on the home page
 if (document.getElementById("eventsList")) {
     initializeMap();

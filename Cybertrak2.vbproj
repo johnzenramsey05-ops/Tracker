@@ -106,6 +106,7 @@
     <Content Include="HomePage.html" />
     <Content Include="Invitations.html" />
     <Content Include="JavaScript.js" />
+    <Content Include="JoinEvent.html" />
     <Content Include="LocationPermissions.html" />
     <Content Include="LoginPage.html" />
     <Content Include="ManageConsent.html" />
@@ -115,7 +116,6 @@
     <Content Include="SelectFriends.html" />
     <Content Include="style.css" />
     <Content Include="style1.css" />
-    <Content Include="StyleSheet1.css" />
     <Content Include="TermsConditions.html" />
     <Content Include="Web.config" />
   </ItemGroup>

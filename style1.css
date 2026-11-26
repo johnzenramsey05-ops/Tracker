@@ -613,6 +613,7 @@ main {
     margin: 0;
 }
 .add-friends .find-friends {
+    width: 100%;
     background: var(--card-bg-color);
     border: 1px solid var(--border-color);
     border-radius: 14px;
@@ -645,4 +646,35 @@ main {
     font-size: 18px;
     margin: 22px 0 10px;
     font-weight: bold;
+}
+/*Join event page*/
+.join-event-page{
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+.join-event-header{
+    text-align:center;
+    margin-bottom: 25px;
+}
+.join-event-header h2{
+    margin-bottom: 5px;
+}
+.join-event-header h3{
+    margin-bottom: 12px;
+}
+.public-events{
+    width: 100%;
+    padding: 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    min-height: 55px;
+    background: var(--card-bg-color);
+    box-sizing: border-box;
+}
+.public-events p{
+    margin: 0;
+    color: var(--secondary-text-color);
 }

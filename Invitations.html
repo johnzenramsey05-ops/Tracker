@@ -15,7 +15,7 @@
         </header>
 
         <div class="invitations-content">
-            <div class="invitation-card">
+            <div class="invitation-card" data-invitation-id="1">
                 <div class="invitation-top">
                     <h3>Event Title</h3>
                     <span class="status">Pending</span>
@@ -30,10 +30,10 @@
                 </div>
 
                 <div class="invitation-actions">
-                    <button type="button" class="accept-button" onclick="acceptInvitation()">
+                    <button type="button" class="accept-button" onclick="acceptInvitation(1)">
                         Accept
                     </button>
-                    <button type="button" class="decline-button" onclick="declineInvitation()">
+                    <button type="button" class="decline-button" onclick="declineInvitation(1)">
                         Decline
                     </button>
                 </div>
